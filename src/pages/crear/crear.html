@@ -1,0 +1,56 @@
+<!--
+  Generated template for the CrearPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>¿Que planeo hacer?</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Titulo</ion-label>
+      <ion-input type="text" [(ngModel)]="actividad.titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descripción</ion-label>
+      <ion-input type="textarea" [(ngModel)]="actividad.descripcion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prioridad</ion-label>
+      <ion-select [(ngModel)]="actividad.prioridad">
+        <ion-option value="Baja">Baja</ion-option>
+        <ion-option value="Media">Media</ion-option>
+        <ion-option value="Alta">Alta</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Estado</ion-label>
+      <ion-select [(ngModel)]="actividad.estado">
+        <ion-option value="do">Por hacer</ion-option>
+        <ion-option value="doing">Haciendo</ion-option>
+        <ion-option value="done">Hecha</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha termino</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="actividad.fechaTermino"></ion-datetime>
+      <hr>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block full (click)="addActividad()" >Registrar</button>
+</ion-content>

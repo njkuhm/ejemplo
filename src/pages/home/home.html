@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      ¿En que estoy?
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-fab top right edge>
+    <button (click)="goToPageCrear()" color="dark" ion-fab mini><ion-icon  name="add"></ion-icon></button>
+    <button (click)="goToPageLogin()" color="dark" ion-fab mini><ion-icon  name="add"></ion-icon></button>
+  </ion-fab>
+
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button color="danger" value="do">
+        POR HACER
+      </ion-segment-button>
+      <ion-segment-button value="doing">
+        HACIENDO
+      </ion-segment-button>
+      <ion-segment-button value="done">
+        HECHAS
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'do'">
+      <div *ngFor="let actividad of actividades" >
+        <ion-item *ngIf="actividad.estado == 'do'">
+          <ion-icon color="danger" name="thumbs-down" item-start></ion-icon>
+            {{actividad.titulo}}
+          <button ion-button item-end (click)="goToPageDetalle(actividad.id)">Ver</button>
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'doing'">
+      <div *ngFor="let actividad of actividades">
+        <ion-item *ngIf="actividad.estado == 'doing'">
+          <ion-icon color="amarillo" name="warning" item-start></ion-icon>
+          {{actividad.titulo}}
+          <button ion-button item-end (click)="goToPageDetalle(actividad.id)">Ver</button>
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'done'">
+      <div *ngFor="let actividad of actividades">
+        <ion-item *ngIf="actividad.estado == 'done'">
+          <ion-icon color="secondary" name="thumbs-up" item-start></ion-icon>
+          {{actividad.titulo}}
+          <button ion-button item-end (click)="goToPageDetalle(actividad.id)">Ver</button>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>
